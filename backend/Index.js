@@ -15,6 +15,10 @@ app.use(express.json())
 // mongoose.connect(process.env.MONGODB_URL)
 connectDB()
 
+app.get("/",(req,res)=>{
+res.json("Hello")
+}
+
 app.use("/api",MembersRoutes)
 app.use("/api/getMembers",MembersData)
 
