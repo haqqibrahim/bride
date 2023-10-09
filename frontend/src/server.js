@@ -1,1 +1,1 @@
-export const server="http://localhost:3002/api"
+export const server="https://bride-api.vercel.app/api"
