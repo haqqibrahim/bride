@@ -29,7 +29,7 @@ const [nextOfKinPhoneNumber,setNextOfKinPhoneNumber]=useState("")
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  axios.post(`${server}/registerMembers`, {
+  axios.post(`${server}/members/registerMembers`, {
     fullname, email, phoneNumber, gender, dateOfBirth, dateOfJoining, maritalStatus, address, nearestBustop, cellUnit, member, department, prayergroup, fellowship, nextOfKin, nextOfKinAddress, nextOfKinMaritalStatus, nextOfKinPhoneNumber
   })
     .then((res) => {
