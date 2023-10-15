@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const Members=require("../models/userDataModel")
 const Admin=require("../models/AdminModel")
 const validator =require("validator")
@@ -8,12 +10,12 @@ const createToken=(_id)=>{
     return jwt.sign({_id},process.env.SECRET,{expiresIn:'3d'})
 }
 
-const getMembersData=async(req,res)=>{
+router.get("/getMembers", async(req,res)=>{
     Members.find({})
     .then(members=>res.json(members))
     .catch(error=>res.json(error))
-    }
-const adminLogin=async(req,res)=>{
+    })
+router.post("/admin-login",async(req,res)=>{
     const {email,password}=req.body;
     if(!email || !password){  //If a field or both is/are left empty, it'll return this message and won't proceed to the next
         return res.status(400).json("All fields must be filled")
@@ -34,7 +36,7 @@ const adminLogin=async(req,res)=>{
             }
   const token=createToken(user._id)
   res.status(200).json({email,token})             
-}
+})
 // const forgottenPassword=async(req,res)=>{
 //     const {email} = req.body;
 //     if (!email) {
@@ -120,8 +122,4 @@ const adminLogin=async(req,res)=>{
     
 // }
 
-module.exports={
-    getMembersData,
-adminLogin,
-// adminSignUp
-}
+module.exports = router;
