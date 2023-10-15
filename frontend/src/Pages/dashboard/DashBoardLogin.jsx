@@ -17,7 +17,7 @@ const navigate=useNavigate()
   const handleSubmit=async(e)=>{
     e.preventDefault()
 try {
-  const response=await axios.post(`${server}/getMembers/`,{email,password})  
+  const response=await axios.post(`${server}/dashboard/admin-login`,{email,password})  
   if (response.status===200) {
     const json=response.data;
     localStorage.setItem('useradmin',JSON.stringify(json))
