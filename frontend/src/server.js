@@ -1,1 +1,1 @@
-export const server="https://bride-api.vercel.app/api"
+export const server="https://bridebackend.onrender.com"
