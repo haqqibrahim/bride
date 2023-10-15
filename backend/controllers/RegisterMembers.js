@@ -1,10 +1,12 @@
+const express = require("express");
+const router = express.Router();
 const Members=require("../models/userDataModel")
 const Admin=require("../models/AdminModel")
 const validator=require("validator")
 const nodemailer=require("nodemailer")
 const jwt=require("jsonwebtoken")
 
-const Register=async(req,res)=>{
+router.post("/registerMembers",async(req,res)=>{
 const {fullname,email,phoneNumber,gender,dateOfBirth,dateOfJoining,maritalStatus,address,nearestBustop,cellUnit,member,department,prayergroup,fellowship,nextOfKin,nextOfKinAddress,nextOfKinMaritalStatus,nextOfKinPhoneNumber}=req.body;   
 // if (!fullname || !email || !phoneNumber || !gender  || !dateOfBirth || !dateOfJoining || !maritalStatus || !address || !nearestBustop || !cellUnit || !member || !department || !prayerGroup || !fellowship || !nextOfKin || !nextOfKinAddress || !nextOfKinMaritalStatus || !nextOfKinPhoneNumber) {
 //     return res.status(400).json({message:"All fields must be filled"})
@@ -27,7 +29,7 @@ try {
     res.status(500).json({message:error.message})
 }
 
-}
+})
 const resetPassword=async(req,res)=>{
     const {id, token} = req.params
     const {password} = req.body
@@ -56,6 +58,4 @@ if (!verifyUserInDataBase) {
 }
 
 
-module.exports={
-    Register,
-}
+module.exports = router;
