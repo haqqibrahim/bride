@@ -10,7 +10,7 @@ function DashBoard() {
   const navigate=useNavigate()
   const {adminlogout}=useAdminLogout()
 
-  axios.get(`${server}/getMembers`)
+  axios.get(`${server}/dashboard/getMembers`)
  .then(result=>setMembers(result.data))
  .catch(err=>console.log(err))
 
