@@ -3,8 +3,8 @@ const express=require('express')
 const cors=require('cors')
 const mongoose=require('mongoose')
 const app=express()
-const MembersRoutes=require("./routes/user")
-const MembersData=require("./routes/AdminRoutes")
+// const MembersRoutes=require("./routes/user")
+// const MembersData=require("./routes/AdminRoutes")
 const connectDB=require("./db/database")
 app.use(cors({
 origin:["https://bride-mu.vercel.app/"],
